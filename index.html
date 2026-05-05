@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abdelhak Chellal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #2563eb;
+      --blue-soft: #eff6ff;
+      --ink: #111111;
+      --ink-2: #444444;
+      --ink-3: #888888;
+      --border: #e5e5e5;
+      --bg: #ffffff;
+      --bg-alt: #fafafa;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --max: 680px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+    .nav-name {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: .01em;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .78rem;
+      color: var(--ink-3);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .lang-sw {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .lang-sw button {
+      background: none; border: none; cursor: pointer;
+      padding: .22rem .55rem;
+      font-family: var(--sans);
+      font-size: .68rem; font-weight: 600;
+      color: var(--ink-3);
+      transition: all .15s;
+    }
+    .lang-sw button.on { background: var(--blue); color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 4.5rem 0 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.4rem;
+    }
+    .hero-photo {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--blue-soft);
+      border: 2px solid var(--border);
+    }
+    .hero-text {}
+    .hero-label {
+      font-size: .72rem;
+      font-weight: 500;
+      color: var(--blue);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: .9rem;
+    }
+    .hero-bio {
+      font-size: .92rem;
+      color: var(--ink-2);
+      line-height: 1.75;
+      max-width: 520px;
+    }
+    .hero-bio a {
+      color: var(--ink);
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+    }
+    .hero-bio a:hover { text-decoration-color: var(--blue); color: var(--blue); }
+    .hero-loc {
+      display: flex; align-items: center; gap: .4rem;
+      margin-top: .85rem;
+      font-size: .78rem;
+      color: var(--ink-3);
+    }
+    .hero-loc svg { width: 13px; height: 13px; }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section:last-of-type { border-bottom: none; }
+    .section-title {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 1.6rem;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-year-group { margin-bottom: 0; }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 0 1.4rem;
+      padding: .85rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .tl-item:first-child { border-top: none; }
+    .tl-meta { padding-top: .1rem; }
+    .tl-date {
+      font-size: .72rem;
+      color: var(--ink-3);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    .tl-tag {
+      display: inline-block;
+      margin-top: .3rem;
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .15rem .45rem;
+      border-radius: 3px;
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+    .tl-tag.research { background: #f0fdf4; color: #16a34a; }
+    .tl-tag.industry  { background: #fff7ed; color: #c2410c; }
+    .tl-content h3 {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: .15rem;
+      line-height: 1.35;
+    }
+    .tl-content .where {
+      font-size: .82rem;
+      color: var(--ink-2);
+    }
+    .tl-content .where a {
+      color: inherit;
+      text-decoration-color: var(--border);
+      text-underline-offset: 2px;
+    }
+    .tl-content .where a:hover { color: var(--blue); }
+    .tl-content p {
+      margin-top: .35rem;
+      font-size: .82rem;
+      color: var(--ink-3);
+      line-height: 1.65;
+    }
+
+    /* ── INTERESTS ── */
+    .interests-grid {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+    }
+    .interest-chip {
+      font-size: .8rem;
+      color: var(--ink-2);
+      padding: .3rem .75rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--bg-alt);
+      transition: border-color .15s, color .15s;
+    }
+    .interest-chip:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ── CV ── */
+    .cv-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .cv-desc {
+      font-size: .88rem;
+      color: var(--ink-2);
+      line-height: 1.7;
+    }
+    .cv-btns { display: flex; gap: .7rem; flex-shrink: 0; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-family: var(--sans);
+      font-size: .78rem; font-weight: 500;
+      text-decoration: none; border-radius: 6px;
+      padding: .5rem 1rem;
+      transition: all .15s;
+    }
+    .btn-primary {
+      background: var(--blue); color: #fff;
+      border: 1px solid var(--blue);
+    }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-ghost {
+      background: transparent; color: var(--ink-2);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--ink-3); color: var(--ink); }
+
+    /* ── CONTACT ── */
+    .contact-links {
+      display: flex; flex-direction: column; gap: .5rem;
+    }
+    .contact-row {
+      display: flex; align-items: center; gap: .8rem;
+      padding: .65rem .85rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--ink-2);
+      font-size: .86rem;
+      transition: all .15s;
+      background: var(--bg-alt);
+    }
+    .contact-row:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-soft); }
+    .contact-row svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--ink-3); }
+    .contact-row:hover svg { color: var(--blue); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 0 3rem;
+      text-align: center;
+    }
+    .footer-txt {
+      font-size: .72rem;
+      color: var(--ink-3);
+    }
+
+    /* ── UTILS ── */
+    .fade {
+      opacity: 0; transform: translateY(14px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .fade.in { opacity: 1; transform: none; }
+
+    @media(max-width: 520px) {
+      .hero-inner { flex-direction: column; gap: 1.2rem; }
+      .tl-item { grid-template-columns: 90px 1fr; gap: 0 .9rem; }
+      .nav-links { display: none; }
+      .cv-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-name">Abdelhak Chellal</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#timeline" data-i="nav_timeline">Timeline</a></li>
+        <li><a href="#interests" data-i="nav_interests">Interests</a></li>
+        <li><a href="#cv" data-i="nav_cv">CV</a></li>
+        <li><a href="#contact" data-i="nav_contact">Contact</a></li>
+      </ul>
+      <div class="lang-sw">
+        <button id="btn-en" class="on" onclick="setLang('en')">EN</button>
+        <button id="btn-fr" onclick="setLang('fr')">FR</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- HERO -->
+    <header class="hero fade">
+      <div class="hero-inner">
+        <img src="profile.jpg" class="hero-photo" alt="Abdelhak Chellal">
+        <div class="hero-text">
+          <div class="hero-label" data-i="hero_label">AI Researcher</div>
+          <h1 class="hero-name">Abdelhak Chellal</h1>
+          <p class="hero-bio" data-i="hero_bio">
+            Final-year AI engineering student at <a href="https://www.ensia.edu.dz" target="_blank">ENSIA</a>, currently doing my thesis at the <a href="https://www.usherbrooke.ca" target="_blank">Université de Sherbrooke</a> under Prof. Djemel Ziou and Prof. Sid-Ahmed Berrani. My work sits at the intersection of LLMs and multi-agent systems. I am looking for a PhD position.
+          </p>
+          <div class="hero-loc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <span>Sherbrooke, Quebec, Canada</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- TIMELINE -->
+    <section class="section fade" id="timeline">
+      <div class="section-title" data-i="s_timeline">Timeline</div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <div class="tl-date">2026 — <span data-i="present">now</span></div>
+            <span class="tl-tag industry" data-i="tag_work">Work</span>
+          </div>
+          <div class="tl-content">
+            <h3 data-i="e1_title">AI Consultant & Engineer</h3>
+            <div class="where">Systelium</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <div class="tl-date">2026 — <span data-i="present">now</span></div>
+            <span class="tl-tag research" data-i="tag_research">Research</span>
+          </div>
+          <div class="tl-content">
+            <h3 data-i="e2_title">Thesis Intern — LLMs & Multi-Agent Systems</h3>
+            <div class="where"><a href="https://www.usherbrooke.ca" target="_blank">Université de Sherbrooke</a>, MOIVRE Lab</div>
+            <p data-i="e2_desc">Automatic structured report generation from heterogeneous data. Supervised by Prof. Djemel Ziou & Prof. Sid-Ahmed Berrani.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <div class="tl-date">2024 — 2025</div>
+            <span class="tl-tag research" data-i="tag_research">Research</span>
+          </div>
+          <div class="tl-content">
+            <h3 data-i="e3_title">Data Science Intern — GeoAI</h3>
+            <div class="where">Algerian Space Agency (ASAL)</div>
+            <p data-i="e3_desc">Computer vision and deep learning for satellite image classification.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <div class="tl-date">2024</div>
+            <span class="tl-tag" data-i="tag_edu">Education</span>
+          </div>
+          <div class="tl-content">
+            <h3 data-i="e4_title">SUSI Emerging Entrepreneurs Program</h3>
+            <div class="where"><a href="https://www.umass.edu" target="_blank">UMass Amherst</a>, Massachusetts, USA</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <div class="tl-date">2024 — 2026</div>
+            <span class="tl-tag" data-i="tag_edu">Education</span>
+          </div>
+          <div class="tl-content">
+            <h3 data-i="e5_title">Master — Management for Engineers</h3>
+            <div class="where"><a href="https://www.ehec.dz" target="_blank">EHEC</a>, Algiers — Dual degree with ENSIA</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <div class="tl-date">2021 — 2026</div>
+            <span class="tl-tag" data-i="tag_edu">Education</span>
+          </div>
+          <div class="tl-content">
+            <h3 data-i="e6_title">Engineering Degree & Master — AI and Data Science</h3>
+            <div class="where"><a href="https://www.ensia.edu.dz" target="_blank">ENSIA</a>, Algiers</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERESTS -->
+    <section class="section fade" id="interests">
+      <div class="section-title" data-i="s_interests">Research Interests</div>
+      <div class="interests-grid">
+        <span class="interest-chip" data-i="int1">Large Language Models</span>
+        <span class="interest-chip" data-i="int2">Multi-Agent Systems</span>
+        <span class="interest-chip" data-i="int3">Natural Language Processing</span>
+        <span class="interest-chip" data-i="int4">Computer Vision</span>
+        <span class="interest-chip" data-i="int5">AI for Science</span>
+        <span class="interest-chip" data-i="int6">Reasoning & Planning</span>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section class="section fade" id="cv">
+      <div class="section-title" data-i="s_cv">CV</div>
+      <div class="cv-row">
+        <p class="cv-desc" data-i="cv_desc">You can view or download my full curriculum vitae below.</p>
+        <div class="cv-btns">
+          <a href="Abdelhak_Chellal_CV_EN.pdf" target="_blank" class="btn btn-primary" id="cv-view-btn" data-i="cv_view">View CV</a>
+          <a href="Abdelhak_Chellal_CV_EN.pdf" download class="btn btn-ghost" id="cv-dl-btn" data-i="cv_dl">Download</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section fade" id="contact">
+      <div class="section-title" data-i="s_contact">Contact</div>
+      <div class="contact-links">
+        <a href="mailto:abdelhakchellal52@gmail.com" class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          abdelhakchellal52@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/abdelhak-chellal" target="_blank" class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/abdelhak-chellal
+        </a>
+        <a href="https://github.com/Abdelhak-Chellal" target="_blank" class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          github.com/Abdelhak-Chellal
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p class="footer-txt" id="ftxt"></p>
+  </div>
+</footer>
+
+<script>
+const T = {
+  en: {
+    nav_timeline:"Timeline", nav_interests:"Interests", nav_cv:"CV", nav_contact:"Contact",
+    hero_label:"AI Researcher",
+    hero_bio:`Final-year AI engineering student at <a href="https://www.ensia.edu.dz" target="_blank">ENSIA</a>, currently doing my thesis at the <a href="https://www.usherbrooke.ca" target="_blank">Université de Sherbrooke</a> under Prof. Djemel Ziou and Prof. Sid-Ahmed Berrani. My work sits at the intersection of LLMs and multi-agent systems. I am looking for a PhD position.`,
+    s_timeline:"Timeline", s_interests:"Research Interests", s_contact:"Contact",
+    present:"now",
+    tag_work:"Work", tag_research:"Research", tag_edu:"Education",
+    e1_title:"AI Consultant & Engineer",
+    e2_title:"Thesis Intern — LLMs & Multi-Agent Systems",
+    e2_desc:"Automatic structured report generation from heterogeneous data. Supervised by Prof. Djemel Ziou & Prof. Sid-Ahmed Berrani.",
+    e3_title:"Data Science Intern — GeoAI",
+    e3_desc:"Computer vision and deep learning for satellite image classification.",
+    e4_title:"SUSI Emerging Entrepreneurs Program",
+    e5_title:"Master — Management for Engineers",
+    e6_title:"Engineering Degree & Master — AI and Data Science",
+    int1:"Large Language Models", int2:"Multi-Agent Systems", int3:"Natural Language Processing",
+    int4:"Computer Vision", int5:"AI for Science", int6:"Reasoning & Planning",
+    cv_desc:"You can view or download my full curriculum vitae below.",
+    cv_view:"View CV", cv_dl:"Download",
+  },
+  fr: {
+    nav_timeline:"Parcours", nav_interests:"Intérêts", nav_cv:"CV", nav_contact:"Contact",
+    hero_label:"Chercheur en IA",
+    hero_bio:`Étudiant-ingénieur en IA en dernière année à <a href="https://www.ensia.edu.dz" target="_blank">l'ENSIA</a>, actuellement en stage de fin d'études à l'<a href="https://www.usherbrooke.ca" target="_blank">Université de Sherbrooke</a> sous la direction du Prof. Djemel Ziou et du Prof. Sid-Ahmed Berrani. Mes travaux portent sur les LLM et les systèmes multi-agents. Je recherche une opportunité de doctorat.`,
+    s_timeline:"Parcours", s_interests:"Intérêts de recherche", s_cv:"CV", s_contact:"Contact",
+    present:"auj.",
+    tag_work:"Travail", tag_research:"Recherche", tag_edu:"Formation",
+    e1_title:"Consultant & Ingénieur IA",
+    e2_title:"Stagiaire — LLM & Systèmes multi-agents",
+    e2_desc:"Génération automatique de rapports structurés à partir de données hétérogènes. Encadré par Prof. Djemel Ziou & Prof. Sid-Ahmed Berrani.",
+    e3_title:"Stagiaire Data Science — GéoIA",
+    e3_desc:"Vision par ordinateur et deep learning pour la classification d'images satellitaires.",
+    e4_title:"Programme SUSI Emerging Entrepreneurs",
+    e5_title:"Master — Management pour Ingénieurs",
+    e6_title:"Diplôme d'Ingénieur & Master — IA et Science des Données",
+    int1:"Grands modèles de langage", int2:"Systèmes multi-agents", int3:"Traitement du langage naturel",
+    int4:"Vision par ordinateur", int5:"IA pour la science", int6:"Raisonnement & planification",
+    cv_desc:"Vous pouvez consulter ou télécharger mon curriculum vitae complet ci-dessous.",
+    cv_view:"Voir le CV", cv_dl:"Télécharger",
+  }
+};
+
+function getLang(){ return localStorage.getItem('lang') || ((navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en'); }
+let lang = getLang();
+
+function updateCVLinks() {
+  const cvViewBtn = document.getElementById('cv-view-btn');
+  const cvDlBtn = document.getElementById('cv-dl-btn');
+  if (lang === 'fr') {
+    cvViewBtn.href = 'Abdelhak_Chellal_CV.pdf';
+    cvDlBtn.href = 'Abdelhak_Chellal_CV.pdf';
+  } else {
+    cvViewBtn.href = 'Abdelhak_Chellal_CV_EN.pdf';
+    cvDlBtn.href = 'Abdelhak_Chellal_CV_EN.pdf';
+  }
+}
+
+function setLang(l) {
+  lang = l;
+  localStorage.setItem('lang', l);
+  document.documentElement.lang = l;
+  document.getElementById('btn-en').classList.toggle('on', l==='en');
+  document.getElementById('btn-fr').classList.toggle('on', l==='fr');
+  const t = T[l];
+  document.querySelectorAll('[data-i]').forEach(el => {
+    const k = el.getAttribute('data-i');
+    if (!t[k]) return;
+    if (k === 'hero_bio') { el.innerHTML = t[k]; return; }
+    el.textContent = t[k];
+  });
+  updateCVLinks();
+}
+
+// fade-in on scroll
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); }), { threshold: .05 });
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+document.getElementById('ftxt').textContent = '© ' + new Date().getFullYear() + ' Abdelhak Chellal';
+setLang(lang);
+</script>
+</body>
+</html>
