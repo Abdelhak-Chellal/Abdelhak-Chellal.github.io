@@ -676,351 +676,86 @@
       .cv-btns { gap: .5rem; width: 100%; }
       .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
     }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at top, rgba(59, 130, 246, 0.15), transparent 38%),
+        linear-gradient(180deg, #0f1419 0%, #111827 100%);
+      color: var(--ink);
+    }
+
+    .maintenance-wrap {
+      width: min(92vw, 720px);
+      padding: 2rem;
+    }
+
+    .maintenance-card {
+      background: rgba(17, 24, 39, 0.82);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: clamp(2rem, 5vw, 4rem);
+      text-align: center;
+      box-shadow: 0 24px 80px rgba(15, 23, 42, 0.5);
+    }
+
+    .maintenance-badge {
+      display: inline-block;
+      margin-bottom: 1.25rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.32);
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .maintenance-card h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .maintenance-card p {
+      max-width: 42ch;
+      margin: 0 auto;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.8;
+      color: var(--ink-2);
+    }
+
+    .maintenance-name {
+      margin-top: 1.6rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
   </style>
 </head>
 <body>
-
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-name">Abdelhak Chellal</a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="#timeline" data-i="nav_timeline">Timeline</a></li>
-        <li><a href="#interests" data-i="nav_interests">Interests</a></li>
-        <li><a href="#cv" data-i="nav_cv">CV</a></li>
-        <li><a href="#contact" data-i="nav_contact">Contact</a></li>
-      </ul>
-      <div class="lang-sw">
-        <button id="btn-en" class="on" onclick="setLang('en')">EN</button>
-        <button id="btn-fr" onclick="setLang('fr')">FR</button>
-      </div>
+  <main class="maintenance-wrap">
+    <div class="maintenance-card">
+      <div class="maintenance-badge">Out of service</div>
+      <h1>Website temporarily unavailable</h1>
+      <p>
+        I’m taking a short break from this site and will be back soon.
+        Thank you for your patience.
+      </p>
+      <div class="maintenance-name">Abdelhak Chellal</div>
     </div>
-  </div>
-</nav>
+  </main>
 
-<main>
-  <div class="container">
-
-    <!-- HERO -->
-    <header class="hero fade">
-      <div class="hero-inner">
-        <img src="IMG_0691.jpg" class="hero-photo" alt="Abdelhak Chellal" loading="eager">
-        <div class="hero-text">
-          <div class="hero-label" data-i="hero_label">AI Researcher</div>
-          <h1 class="hero-name">Abdelhak Chellal</h1>
-          <p class="hero-bio" data-i="hero_bio">
-            Final-year AI engineering student at <a href="https://www.ensia.edu.dz" target="_blank">ENSIA</a>, currently doing my thesis at the <a href="https://www.usherbrooke.ca" target="_blank">Université de Sherbrooke</a> under Prof. Djemel Ziou and Prof. Sid-Ahmed Berrani. My work sits at the intersection of LLMs and multi-agent systems. I am looking for a PhD position.
-          </p>
-          <div class="hero-loc">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            <span>Algiers, Algeria</span>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- TIMELINE -->
-    <section class="section fade" id="timeline">
-      <div class="section-title" data-i="s_timeline">Experience</div>
-      <div class="tl-filter" style="display:flex; gap:1rem; margin-bottom:2rem; flex-wrap:wrap;">
-        <button class="tl-btn active" data-filter="all" style="background:var(--blue); color:#fff; border:1px solid var(--blue); padding:.5rem 1.2rem; border-radius:6px; cursor:pointer; font-size:.9rem; font-weight:500; transition:all .2s;" onclick="filterTimeline('all')">All</button>
-        <button class="tl-btn" data-filter="work" style="background:transparent; color:var(--ink-2); border:1px solid var(--border); padding:.5rem 1.2rem; border-radius:6px; cursor:pointer; font-size:.9rem; font-weight:500; transition:all .2s;" onclick="filterTimeline('work')">Work</button>
-        <button class="tl-btn" data-filter="research" style="background:transparent; color:var(--ink-2); border:1px solid var(--border); padding:.5rem 1.2rem; border-radius:6px; cursor:pointer; font-size:.9rem; font-weight:500; transition:all .2s;" onclick="filterTimeline('research')">Research</button>
-        <button class="tl-btn" data-filter="education" style="background:transparent; color:var(--ink-2); border:1px solid var(--border); padding:.5rem 1.2rem; border-radius:6px; cursor:pointer; font-size:.9rem; font-weight:500; transition:all .2s;" onclick="filterTimeline('edu')">Education</button>
-      </div>
-      <div class="timeline">
-
-        <div class="tl-item" data-category="work">
-          <div class="tl-meta">
-            <div class="tl-date">2026 — <span data-i="present">now</span></div>
-            <span class="tl-tag industry" data-i="tag_work">Work</span>
-          </div>
-          <div class="tl-content">
-            <h3 data-i="e1_title">AI Consultant & Engineer</h3>
-            <div class="where">Systelium</div>
-            <p data-i="e1_desc">Design and deployment of AI solutions for business process automation, from exploration to production, and training sessions for teams on AI tools and techniques.</p>
-          </div>
-        </div>
-
-        <div class="tl-item" data-category="work">
-          <div class="tl-meta">
-            <div class="tl-date">June 2023 — Sept 2023</div>
-            <span class="tl-tag industry" data-i="tag_work">Work</span>
-          </div>
-          <div class="tl-content">
-            <h3 data-i="e0_title">Backend Developer Intern</h3>
-            <div class="where">Pysoft</div>
-            <p data-i="e0_desc">Design and development of REST APIs and database architectures with Django and Django REST Framework, following software engineering best practices.</p>
-          </div>
-        </div>
-
-        <div class="tl-item" data-category="research">
-          <div class="tl-meta">
-            <div class="tl-date">2025 — 2026</div>
-            <span class="tl-tag research" data-i="tag_research">Research</span>
-          </div>
-          <div class="tl-content">
-            <h3 data-i="e2_title">Thesis Intern — LLMs & Multi-Agent Systems</h3>
-            <div class="where"><a href="https://www.usherbrooke.ca" target="_blank">Université de Sherbrooke</a>, MOIVRE Lab</div>
-            <p data-i="e2_desc">Automatic structured report generation from heterogeneous data.</p>
-          </div>
-        </div>
-
-        <div class="tl-item" data-category="research">
-          <div class="tl-meta">
-            <div class="tl-date">2024 — 2025</div>
-            <span class="tl-tag research" data-i="tag_research">Research</span>
-          </div>
-          <div class="tl-content">
-            <h3 data-i="e3_title">Data Science Intern — GeoAI</h3>
-            <div class="where">Algerian Space Agency (ASAL)</div>
-            <p data-i="e3_desc">Computer vision and deep learning for satellite image classification.</p>
-          </div>
-        </div>
-
-        <div class="tl-item" data-category="edu">
-          <div class="tl-meta">
-            <div class="tl-date">2021 — 2026</div>
-            <span class="tl-tag" data-i="tag_edu">Education</span>
-          </div>
-          <div class="tl-content">
-            <h3 data-i="e6_title">Engineering Degree & Master — AI and Data Science</h3>
-            <div class="where"><a href="https://www.ensia.edu.dz" target="_blank">ENSIA</a>, Algiers</div>
-          </div>
-        </div>
-
-        <div class="tl-item" data-category="edu">
-          <div class="tl-meta">
-            <div class="tl-date">2024 — 2026</div>
-            <span class="tl-tag" data-i="tag_edu">Education</span>
-          </div>
-          <div class="tl-content">
-            <h3 data-i="e5_title">Master — Management for Engineers</h3>
-            <div class="where"><a href="https://hec.dz/newsite/?page_id=4105&lang=fr" target="_blank">EHEC</a>, Algiers — Dual degree with ENSIA</div>
-          </div>
-        </div>
-
-        <div class="tl-item" data-category="edu">
-          <div class="tl-meta">
-            <div class="tl-date">2024</div>
-            <span class="tl-tag" data-i="tag_edu">Education</span>
-          </div>
-          <div class="tl-content">
-            <h3 data-i="e4_title">SUSI Economic Empowerment Program</h3>
-            <div class="where"><a href="https://www.umass.edu" target="_blank">UMass Amherst</a>, Massachusetts, USA</div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- INTERESTS -->
-    <section class="section fade" id="interests">
-      <div class="section-title" data-i="s_interests">Research Interests</div>
-      <div class="interests-grid">
-        <span class="interest-chip" data-i="int1">Large Language Models</span>
-        <span class="interest-chip" data-i="int2">Multi-Agent Systems</span>
-        <span class="interest-chip" data-i="int3">Natural Language Processing</span>
-        <span class="interest-chip" data-i="int4">Computer Vision</span>
-        <span class="interest-chip" data-i="int5">AI for Science</span>
-        <span class="interest-chip" data-i="int6">Reasoning & Planning</span>
-        <span class="interest-chip" data-i="int7">Applied AI in Software Engineering</span>
-        <span class="interest-chip" data-i="int8">AI Security & Cybersecurity</span>
-      </div>
-    </section>
-
-    <!-- CV -->
-    <section class="section fade" id="cv">
-      <div class="section-title" data-i="s_cv">CV</div>
-      <div class="cv-row">
-        <p class="cv-desc" data-i="cv_desc">You can view or download my full curriculum vitae below.</p>
-        <div class="cv-btns">
-          <a href="Abdelhak_Chellal_CV_EN.pdf" target="_blank" class="btn btn-primary" id="cv-view-btn" data-i="cv_view">View CV</a>
-          <a href="Abdelhak_Chellal_CV_EN.pdf" download class="btn btn-ghost" id="cv-dl-btn" data-i="cv_dl">Download</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section fade" id="contact">
-      <div class="section-title" data-i="s_contact">Contact</div>
-      <div class="contact-links">
-        <a href="mailto:abdelhak.chellal@umontreal.ca" class="contact-row" title="UdeM Email">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <span>UdeM</span>
-        </a>
-        <a href="mailto:abdelhak.chellal@ensia.edu.dz" class="contact-row" title="ENSIA Email">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <span>ENSIA</span>
-        </a>
-        <a href="mailto:abdelhakchellal52@gmail.com" class="contact-row" title="Gmail">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <span>Personal</span>
-        </a>
-        <a href="https://linkedin.com/in/abdelhak-chellal-a96054257" target="_blank" class="contact-row" title="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H6v-7h3v7zm-1.5-8c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zm10.5 8h-3v-3.3c0-.8-.3-1.3-1-1.3-.5 0-.9.4-1 .7-.1.1-.1.3-.1.5V17h-3s.1-7 0-7h3v1c.3-.5 1-1.2 2.5-1.2 1.8 0 3.1 1.2 3.1 3.7V17z"/></svg>
-          <span>LinkedIn</span>
-        </a>
-        <a href="https://github.com/Abdelhak-Chellal" target="_blank" class="contact-row" title="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.3 2.7 8 6.5 9.3.5.1.7-.2.7-.5v-1.8c-2.3.5-2.8-1.1-2.8-1.1-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.3-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-4.8 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.4-.3.8 0 1.6.1 2.4.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.7-2.4 4.6-4.6 4.8.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5C19.3 20 22 16.3 22 12c0-5.5-4.5-10-10-10z"/></svg>
-          <span>GitHub</span>
-        </a>
-      </div>
-    </section>
-
-  </div>
-</main>
-
-<footer>
-  <div class="container">
-    <p class="footer-txt" id="ftxt"></p>
-  </div>
-</footer>
-
-<script>
-const T = {
-  en: {
-    nav_timeline:"Experience", nav_interests:"Interests", nav_cv:"CV", nav_contact:"Contact",
-    hero_label:"AI Researcher",
-    hero_bio:`Graduated with an Engineering degree and Master's in AI and Data Science from <a href="https://www.ensia.edu.dz" target="_blank">ENSIA</a>, and a Master's in Management for Engineers from <a href="https://hec.dz/newsite/?page_id=4105&lang=fr" target="_blank">EHEC</a>. Starting my PhD at <a href="https://www.umontreal.ca" target="_blank">Université de Montréal</a> in Winter 2027.`,
-    s_timeline:"Experience", s_interests:"Research Interests", s_contact:"Contact",
-    present:"now",
-    tag_work:"Work", tag_research:"Research", tag_edu:"Education",
-    e1_title:"AI Consultant & Engineer",
-    e1_desc:"Design and deployment of AI solutions for business process automation, from exploration to production, and training sessions for teams on AI tools and techniques.",
-    e0_title:"Backend Developer Intern",
-    e0_desc:"Design and development of REST APIs and database architectures with Django and Django REST Framework, following software engineering best practices.",
-    e2_title:"Thesis Intern — LLMs & Multi-Agent Systems",
-    e2_desc:"Automatic structured report generation from heterogeneous data.",
-    e3_title:"Data Science Intern — GeoAI",
-    e3_desc:"Computer vision and deep learning for satellite image classification.",
-    e4_title:"SUSI Economic Empowerment Program",
-    e5_title:"Master — Management for Engineers",
-    e6_title:"Engineering Degree & Master — AI and Data Science",
-    int1:"Large Language Models", int2:"Multi-Agent Systems", int3:"Applied Machine Learning",
-    int4:"NLP & Computer Vision", int5:"Practical AI Applications",
-    int6:"AI in Software Engineering", int7:"AI in Networks and Security",
-    cv_desc:"You can view or download my full curriculum vitae below.",
-    cv_view:"View CV", cv_dl:"Download",
-  },
-  fr: {
-    nav_timeline:"Parcours", nav_interests:"Intérêts", nav_cv:"CV", nav_contact:"Contact",
-    hero_label:"Chercheur en IA",
-    hero_bio:`Diplômé avec un diplôme d'ingénieur et un Master en IA et Science des Données de l'<a href="https://www.ensia.edu.dz" target="_blank">ENSIA</a>, et un Master en Management pour Ingénieurs de l'<a href="https://hec.dz/newsite/?page_id=4105&lang=fr" target="_blank">EHEC</a>. Je commence mon doctorat à l'<a href="https://www.umontreal.ca" target="_blank">Université de Montréal</a> en hiver 2027.`,
-    s_timeline:"Parcours", s_interests:"Intérêts de recherche", s_cv:"CV", s_contact:"Contact",
-    present:"auj.",
-    tag_work:"Travail", tag_research:"Recherche", tag_edu:"Formation",
-    e1_title:"Consultant & Ingénieur IA",
-    e1_desc:"Conception et déploiement de solutions IA pour l’automatisation de processus métiers, de la phase d’exploration jusqu’à la mise en production, ainsi que des sessions de formation pour les équipes sur les outils et techniques IA.",
-    e0_title:"Stagiaire Développeur Backend",
-    e0_desc:"Conception et développement d’APIs RESTful et d’architectures de bases de données avec Django et Django REST Framework, en suivant les bonnes pratiques du génie logiciel.",
-    e2_title:"Stagiaire — LLM & Systèmes multi-agents",
-    e2_desc:"Génération automatique de rapports structurés à partir de données hétérogènes.",
-    e3_title:"Stagiaire Data Science — GéoIA",
-    e3_desc:"Vision par ordinateur et deep learning pour la classification d'images satellitaires.",
-    e4_title:"Programme SUSI Autonomisation Économique",
-    e5_title:"Master — Management pour Ingénieurs",
-    e6_title:"Diplôme d'Ingénieur & Master — IA et Science des Données",
-    int1:"Grands modèles de langage", int2:"Systèmes multi-agents", int3:"Apprentissage machine appliqué",
-    int4:"Traitement de langage & vision", int5:"Applications IA pratiques",
-    int6:"IA en génie logiciel", int7:"IA dans les réseaux et la sécurité",
-    cv_desc:"Vous pouvez consulter ou télécharger mon curriculum vitae complet ci-dessous.",
-    cv_view:"Voir le CV", cv_dl:"Télécharger",
-  }
-};
-
-function getLang(){ return localStorage.getItem('lang') || ((navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en'); }
-let lang = getLang();
-
-function updateCVLinks() {
-  const cvViewBtn = document.getElementById('cv-view-btn');
-  const cvDlBtn = document.getElementById('cv-dl-btn');
-  if (lang === 'fr') {
-    cvViewBtn.href = 'Abdelhak_Chellal_CV.pdf';
-    cvDlBtn.href = 'Abdelhak_Chellal_CV.pdf';
-  } else {
-    cvViewBtn.href = 'Abdelhak_Chellal_CV_EN.pdf';
-    cvDlBtn.href = 'Abdelhak_Chellal_CV_EN.pdf';
-  }
-}
-
-function setLang(l) {
-  lang = l;
-  localStorage.setItem('lang', l);
-  document.documentElement.lang = l;
-  document.getElementById('btn-en').classList.toggle('on', l==='en');
-  document.getElementById('btn-fr').classList.toggle('on', l==='fr');
-  const t = T[l];
-  document.querySelectorAll('[data-i]').forEach(el => {
-    const k = el.getAttribute('data-i');
-    if (!t[k]) return;
-    if (k === 'hero_bio') { el.innerHTML = t[k]; return; }
-    el.textContent = t[k];
-  });
-  updateCVLinks();
-}
-
-// fade-in on scroll
-const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); }), { threshold: .05 });
-document.querySelectorAll('.fade').forEach(el => io.observe(el));
-
-// Timeline filtering
-function filterTimeline(category) {
-  const items = document.querySelectorAll('.tl-item');
-  const buttons = document.querySelectorAll('.tl-btn');
-  
-  buttons.forEach(btn => {
-    btn.style.background = 'transparent';
-    btn.style.color = 'var(--ink-2)';
-    btn.style.borderColor = 'var(--border)';
-  });
-  
-  const activeBtn = document.querySelector(`[data-filter="${category}"]`);
-  if (activeBtn) {
-    activeBtn.style.background = 'var(--blue)';
-    activeBtn.style.color = '#fff';
-    activeBtn.style.borderColor = 'var(--blue)';
-  }
-  
-  items.forEach(item => {
-    if (category === 'all' || item.dataset.category === category) {
-      item.style.display = 'grid';
-      item.style.animation = 'fadeIn .3s ease';
-    } else {
-      item.style.display = 'none';
-    }
-  });
-}
-
-// Handle HEIC image conversion for browser compatibility
-async function handleHeicImage() {
-  const img = document.querySelector('.hero-photo');
-  if (!img || !img.src.endsWith('.HEIC')) return;
-  
-  try {
-    // Check if browser supports HEIC natively
-    const testImg = new Image();
-    let supportsHeic = false;
-    testImg.onload = () => { supportsHeic = true; };
-    testImg.src = 'data:image/heic;base64,AAA=';
-    
-    // If HEIC is not supported and heic2any is available, try conversion
-    if (!supportsHeic && typeof heic2any !== 'undefined') {
-      const response = await fetch(img.src);
-      const blob = await response.blob();
-      const convertedBlob = await heic2any({ blob });
-      const url = URL.createObjectURL(convertedBlob);
-      img.src = url;
-    }
-  } catch (e) {
-    console.log('HEIC conversion not available, using native support');
-  }
-}
-
-document.addEventListener('DOMContentLoaded', handleHeicImage);
-
-document.getElementById('ftxt').textContent = '© ' + new Date().getFullYear() + ' Abdelhak Chellal';
-setLang(lang);
-</script>
+  <script>
+    document.title = 'Out of service';
+  </script>
 </body>
 </html>
